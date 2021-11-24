@@ -4,6 +4,7 @@ from typing import Union
 import argparse
 import os
 import sys
+import time
 
 from sudoku import Sudoku, load_from_file
 
@@ -52,6 +53,8 @@ if __name__ == "__main__":
         print(f"puzzle {args.puzzle} does not exist")
         sys.exit(1)
 
+    t0 = time.time()
+
     # Load the puzzle
     sudoku = load_from_file(puzzle_path)
 
@@ -67,9 +70,25 @@ if __name__ == "__main__":
         # If this is not the last run, reload the puzzle
         if i < args.number_of_runs - 1:
             sudoku = load_from_file(puzzle_path)
-
+    
+   
+    
     print("DONE SOLVING")
+
 
     # Show the solution
     print()
     print(solved_sudoku)
+
+    print()
+    print("------------------------------------------------")
+    print()
+    t1 = time.time()
+    total = t1-t0
+    print(f"timer in sec: {total}")
+
+    print() 
+    print("------------------------------------------------")
+    print()
+
+    
